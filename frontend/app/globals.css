@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Georgia";
+    --font-body: "Inter";
+    --font-mono: "IBM Plex Mono";
+
+    --background: 42 32% 96%;
+    --foreground: 220 22% 12%;
+
+    --card: 40 28% 99%;
+    --card-foreground: 220 22% 12%;
+
+    --primary: 221 38% 19%;
+    --primary-foreground: 42 30% 97%;
+
+    --secondary: 220 16% 91%;
+    --secondary-foreground: 220 22% 15%;
+
+    --muted: 40 16% 91%;
+    --muted-foreground: 220 9% 38%;
+
+    --accent: 36 56% 45%;
+    --accent-foreground: 42 30% 98%;
+
+    --border: 222 13% 84%;
+    --input: 222 13% 84%;
+    --ring: 36 56% 45%;
+
+    --destructive: 9 62% 44%;
+    --destructive-foreground: 40 30% 97%;
+
+    --verified: 146 25% 30%;
+    --disputed: 13 56% 40%;
+    --pending: 39 58% 42%;
+    --seal: 36 56% 45%;
+
+    --radius: 0.35rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+  ::selection {
+    background-color: hsl(var(--accent) / 0.25);
+  }
+}
+
+@layer utilities {
+  .paper-texture {
+    background-image: theme("backgroundImage.grain");
+  }
+
+  .case-number::before {
+    content: "\00a7";
+    @apply mr-1 text-accent;
+  }
+
+  .rule {
+    @apply border-t border-border;
+  }
+
+  .stamp {
+    @apply inline-flex items-center gap-1.5 rounded-sm border px-2 py-0.5 text-[11px] font-mono uppercase tracking-wider;
+  }
+
+  .focus-ring {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
